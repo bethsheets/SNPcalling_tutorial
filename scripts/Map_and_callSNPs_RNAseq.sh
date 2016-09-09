@@ -1,5 +1,6 @@
 #!/bin/bash
 #Pipeline for mapping reads and calling SNPs from RNAseq data
+#make sure you are in the right directory, e.g. "cd ~/Desktop/SNPcalling_from_RNAseq"
 
 #Index assembly bowtie2
 bowtie2-build ahy.fa ahy

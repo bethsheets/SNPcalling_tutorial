@@ -154,7 +154,8 @@ In R
 ```
 pc.out<-prcomp(snps)
 summary(pc.out)
-plot(pc.out$x[,1],pc.out$x[,2],col=meta$Pool)
+plot(pc.out$x[,1],pc.out$x[,2],col=meta$Pool,xlab='PC1',ylab='PC2',pch=19)
+legend('topright',legend=unique(meta$Pool),fill=c('black','red','green'))
 ```
 
 ##Fst
@@ -183,7 +184,7 @@ fst.out$FST
 
 #look at fst distribution across sites
 site.fst<-fst.out$per.loc[['FST']]
-hist(site.fst)
+hist(site.fst,xlab='Fst',ylab='Counts',main='Distribution of Fst between PC1 clusters',col='grey')
 ```
 
 ## Other interesting analyses
