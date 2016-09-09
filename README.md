@@ -140,7 +140,7 @@ rownames(snps)<-indv[,1]
 snps<-as.matrix(snps)
 
 #read in meta data
-meta<-read.delim('~/Desktop/ucasilomar/meta.txt')
+meta<-read.delim('meta.txt')
 ```
 
 
