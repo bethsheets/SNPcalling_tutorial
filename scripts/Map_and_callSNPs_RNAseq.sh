@@ -27,7 +27,7 @@ freebayes --genotype-qualities -f ahy.fa *.bam > ahy_unfiltered.vcf
 #Filter SNPs
 vcffilter -f "TYPE = snp & QUAL > 30 & AF > 0.05 & AF < 0.95" -g "GQ > 20" ahy_unfiltered.vcf \
 | vcfallelicprimitives \
-| vcfbiallelic \ 
+| vcfbiallelic \
 | vcfnulldotslashdot \
 | grep -vF './.' | grep -vF '.|.' \
 > biallelic_snps_noNA_minmaf05.vcf
