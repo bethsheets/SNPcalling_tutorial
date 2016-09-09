@@ -43,7 +43,7 @@ brew install vcftools
 - clone this repository
 `git clone https://github.com/bethsheets/SNPcalling_tutorial.git`
 - move into directory 
-`cd SNPcalling_from_RNAseq`
+`cd SNPcalling_tutorial`
 
 
 ##Step 1: Map reads to assembly with Bowtie2
