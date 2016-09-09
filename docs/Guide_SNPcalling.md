@@ -41,7 +41,7 @@ brew install vcftools
 - move to desktop 
 `cd ~/Desktop`
 - clone this repository
-`git clone LINK HERE`
+`git clone https://github.com/bethsheets/SNPcalling_tutorial.git`
 - move into directory 
 `cd SNPcalling_from_RNAseq`
 
