@@ -68,11 +68,12 @@ for i in *.fq.gz; do bowtie2 --rg-id $(basename $i .fq.gz) --rg SM:$(basename $i
 
 ##Step 2: convert bam to .sam files using Samtools
 
-2a)
-- use ‘view’ to convert SAM<->BAM
+2a) use ‘view’ to convert SAM<->BAM
+
 `for i in *.sam; do samtools view -bSq 10 $i > $(basename 	$i .sam)_UNSORTED.bam; done`
 
 2b) sort and index your alignments
+
 `for i in *UNSORTED.bam; do samtools sort $i > $(basename $i _UNSORTED.bam).bam; samtools index $(basename $i _UNSORTED.bam).bam; done`
 
 2c) remove intermediate files
