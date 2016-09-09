@@ -167,8 +167,7 @@ install.packages('hierfstat')
 library(hierfstat)
 
 #prepare 0,1,2 matrix in hierfstat format
-#we use our pca to separate samples into 
-#clusters to test for genetic differentiation
+#we use our pca to separate samples into clusters to test for genetic differentiation
 hf<-snps
 hf[hf==0]<-11
 hf[hf==1]<-12
