@@ -130,7 +130,7 @@ vcffilter -f "TYPE = snp & QUAL > 30 & AF > 0.05 & AF < 0.95" -g "GQ > 20" ahy_u
 6b) In a new document, paste the following
 
 ```
-setwd('~/Desktop/ucasilomar')
+setwd('~/Desktop/SNPcalling_tutorial')
 snps<-read.delim('ahy_snps.012',header=F,na=-1,row.names=1)
 pos<-read.delim('ahy_snps.012.pos',header=F)
 indv<-read.delim('ahy_snps.012.indv',header=F)
