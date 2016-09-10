@@ -41,4 +41,12 @@ fst.out$FST
 site.fst<-fst.out$per.loc[['FST']]
 hist(site.fst,xlab='Fst',ylab='Counts',main='Distribution of Fst between PC1 clusters',col='grey')
 
-
+# find Fst outliers
+install.packages('devtools')
+library(devtools)
+source('http://bioconductor.org/biocLite.R')
+biocLite('qvalue')
+install_github('whitlock/OutFLANK')
+library('OutFLANK')
+fl.out<-OutFLANK(MakeDiploidFSTMat(snps,colnames(snps),meta$Pool),NumberOfSamples=nrow(meta))
+OutFLANKResultsPlotter(fl.out)
