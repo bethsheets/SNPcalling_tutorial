@@ -54,6 +54,14 @@ bowtie2
 #the manual should pop up on your screen 
 ```
 
+### Explanation of bash utilities used in our scripts
+
+- wildcards: `*.txt`
+	- you can reference a set of files that have parts of their names in common (for instance all files that end in .txt) using the "*" character, which refers to any number of characters (excluding things like spaces and tabs). For instance \*.txt refers to all text files in the current directory. 
+- for loops: `for i in *.txt; do <command> $i; done`
+	- This loops through each text file in the current directory in alphabetical order; each text file is given the temporary name "i" inside the loop, which we can use to carry out commands on several files. The syntax "$i" allows us to reference the current file inside the loop. 
+- basenames: `$(basename $i.txt)`
+	- This extracts the name of a file without the extension. You can append a new filename extension by adding it after the command, like this: `$(basename $i.txt).fa` This is useful for naming the output of commands on files that you are processing in a for loop.
 
 ###Set up your workspace
 1) Open Terminal
@@ -91,8 +99,14 @@ bowtie2 --rg-id $(basename $i .fq.gz) \
 > $(basename $i .fq.gz).sam
 done
 ```
+
 - --rg-id & --rg adds sample ids to your alignments, so you can combine them later but still tell which reads go with which samples
-- --very-sensitive is running -D 20 -R 3 -N 0 -L 20 -i S,1,0.50 (this means...)
+- --very-sensitive is running -D 20 -R 3 -N 0 -L 20 -i S,1,0.50
+	- -D give up extending after <int> failed extends in a row
+	- -R for reads w/ repetitive seeds, try <int> sets of seeds
+	- -N max # mismatches in seed alignment; can be 0 or 1
+	- -L length of seed substrings; must be >3, <32
+	- -i interval between seed substrings w/r/t read length 
 - -x is your Bowtie2 index that you made previously
 - -U is your input file
 
