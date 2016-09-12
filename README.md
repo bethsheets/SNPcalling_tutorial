@@ -2,46 +2,67 @@
 by the Palumbi Lab, September 2016
 
 About the dataset: 
-Reads from a subset of contigs from 38 Acropora hyacinthus samples, 100bp single end reads, from Bay and Palumbi (2014) Current Biology
-
-Important: you need Command Line Tools installed to install and run these programs
-
-```
-#are command line tools installed? If so, this command will return where it is installed
-xcode-select -p
-#if command line tools are not installed, install them
-xcode-select --install
-```
+Reads (100bp single end) from a subset of contigs from 38 Acropora hyacinthus samples from Bay and Palumbi (2014) Current Biology
 
 Programs needed: bowtie2, samtools, freebayes, vcflib, VCFtools, R
 
-Easy install to try pipeline on a personal mac:
 
-- install homebrew, a science package manager
+##How to install programs on a personal mac to try the tutorial
+1) Check to see if Command Line Tools is installed on your computer. 
 
 ```
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
-brew tap homebrew/science
+# Open terminal
+# are command line tools installed? Type the command below. If it is installed, it should return the path. 
+xcode-select -p
 
-# install packages used for this pipeline
+
+#if command line tools are not installed, install them
+xcode-select --install
+``` 
+
+2) Install homebrew, a software package manager
+
+```
+# make sure the permissions on your computer are correct
+sudo chown -R "$USER":admin /usr/local
+
+# install homebrew 
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" 
+
+# tell homebrew we want to use their science software package manager
+brew tap homebrew/science
+```
+
+3) Install packages used for this pipeline with homebrew
+
+```
+
 brew install bowtie2
-brew install samtools
 brew install freebayes
+brew install samtools 
 brew install vcftools
 
+#if you get error "brew link step did not complete successfully" for vcftools or samtools, type:
+brew link vcftools
+#or
+brew link samtools
 ```
 
-- if you get a permissions error, try 
-`sudo chown -R "$USER":admin /usr/local"`
+4) Check to see that each program was installed correctly by calling each of them, for example:
+
+```
+bowtie2
+#the manual should pop up on your screen 
+```
 
 
 ##Set up your workspace
 - open Terminal
-- move to desktop 
+- move to your Desktop 
 `cd ~/Desktop`
-- clone this repository
+- clone the SNPCalling_tutorial repository from Github
 `git clone https://github.com/bethsheets/SNPcalling_tutorial.git`
-- move into directory 
+- move into the downloaded directory 
 `cd SNPcalling_tutorial`
 
 
@@ -94,6 +115,7 @@ rm *.sam
 `samtools faidx ahy.fa`
 
 3b) Call program:
+
 `freebayes --genotype-qualities -f ahy.fa *.bam > ahy_unfiltered.vcf`
 
 - --genotype-qualities : Calculate the marginal probability of genotypes and report as GQ in each sample field in the VCF output
