@@ -84,7 +84,12 @@ bowtie2
 1c) Call program:
 
 ```
-for i in *.fq.gz; do bowtie2 --rg-id $(basename $i .fq.gz) --rg SM:$(basename $i .fq.gz) --very-sensitive -x ahy -U $i > $(basename $i .fq.gz).sam; done
+for i in *.fq.gz; do
+bowtie2 --rg-id $(basename $i .fq.gz) \
+--rg SM:$(basename $i .fq.gz) \
+--very-sensitive -x ahy -U $i \
+> $(basename $i .fq.gz).sam
+done
 ```
 - --rg-id & --rg adds sample ids to your alignments, so you can combine them later but still tell which reads go with which samples
 - --very-sensitive is running -D 20 -R 3 -N 0 -L 20 -i S,1,0.50 (this means...)
