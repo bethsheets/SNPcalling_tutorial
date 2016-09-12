@@ -57,7 +57,7 @@ bowtie2
 ### Explanation of bash utilities used in our scripts
 
 - wildcards: `*.txt`
-	- you can reference a set of files that have parts of their names in common (for instance all files that end in .txt) using the /* character, which refers to any number of characters (excluding things like spaces and tabs). For instance \*.txt refers to all text files in the current directory. 
+	- you can reference a set of files that have parts of their names in common (for instance all files that end in .txt) using the * character, which refers to any number of characters (excluding things like spaces and tabs). For instance \*.txt refers to all text files in the current directory. 
 - for loops: `for i in *.txt; do <command> $i; done`
 	- This loops through each text file in the current directory in alphabetical order; each text file is given the temporary name "i" inside the loop, which we can use to carry out commands on several files. The syntax "$i" allows us to reference the current file inside the loop. 
 - basenames: `$(basename $i.txt)`
