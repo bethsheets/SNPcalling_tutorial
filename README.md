@@ -7,7 +7,7 @@ Reads (100bp single end) from a subset of contigs from 38 Acropora hyacinthus sa
 Programs needed: bowtie2, samtools, freebayes, vcflib, VCFtools, R
 
 
-##How to install programs on a personal mac to try the tutorial
+###How to install programs on a personal mac to try the tutorial
 1) Check to see if Command Line Tools is installed on your computer. 
 
 ```
@@ -55,24 +55,31 @@ bowtie2
 ```
 
 
-##Set up your workspace
-- open Terminal
-- move to your Desktop 
+###Set up your workspace
+1) Open Terminal
+
+2) move to your Desktop 
+
 `cd ~/Desktop`
-- clone the SNPCalling_tutorial repository from Github
+
+3) clone the SNPCalling_tutorial repository from Github
+
 `git clone https://github.com/bethsheets/SNPcalling_tutorial.git`
-- move into the downloaded directory 
+
+4) move into the downloaded directory 
+
 `cd SNPcalling_tutorial`
 
 
-##Step 1: Map reads to assembly with Bowtie2
+##Step 1: Map reads to assembly with bowtie2
 
 1a) Make a Bowtie2 index of your assembly
 
 `bowtie2-build ahy.fa ahy`
 
 1b) Check that the index outputs 6 .bt2 files correctly 
-ls
+
+`ls`
 
 1c) Call program:
 
@@ -80,12 +87,12 @@ ls
 for i in *.fq.gz; do bowtie2 --rg-id $(basename $i .fq.gz) --rg SM:$(basename $i .fq.gz) --very-sensitive -x ahy -U $i > $(basename $i .fq.gz).sam; done
 ```
 - --rg-id & --rg adds sample ids to your alignments, so you can combine them later but still tell which reads go with which samples
-- --very-sensitive is running -D 20 -R 3 -N 0 -L 20 -i S,1,0.50.
+- --very-sensitive is running -D 20 -R 3 -N 0 -L 20 -i S,1,0.50 (this means...)
 - -x is your Bowtie2 index that you made previously
 - -U is your input file
 
 
-##Step 2: convert bam to .sam files using Samtools
+##Step 2: convert .bam to .sam files and sort them using samtools 
 
 2a) use ‘view’ to convert BAM<->SAM
 
@@ -108,8 +115,8 @@ rm *.sam
 ```
 
 
-##Step 3: Call SNPs with FreeBayes
-3a) Index fasta for freebayes
+##Step 3: Call SNPs with freebayes
+3a) Index your assembly for freebayes
 
 `samtools faidx ahy.fa`
 
@@ -122,7 +129,7 @@ rm *.sam
 
 ##Step 4: Filter SNPs with VCFlib
 
-4a) We filter for:
+4a) We filter for/to:
 
 - high quality SNPs (99.9% confident of SNP site, 99% confident of individual genotype) with minimum allele frequency of 5%
 - strip away complex extra haplotype information present in some snps 
