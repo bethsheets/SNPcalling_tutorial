@@ -36,7 +36,6 @@ brew tap homebrew/science
 3) Install packages used for this pipeline with homebrew
 
 ```
-
 brew install bowtie2
 brew install freebayes
 brew install samtools 
