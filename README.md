@@ -1,10 +1,16 @@
 ##UC Genomics Workshop @ Asilomar: How to call SNPs from transcriptomic data
 by the Palumbi Lab, September 2016
 
-About the dataset: 
-Reads (100bp single end) from a subset of contigs from 38 Acropora hyacinthus samples from Bay and Palumbi (2014) Current Biology
+###About the tutorial and dataset: 
 
-Programs needed: bowtie2, samtools, freebayes, vcflib, VCFtools, R
+- The Github repository for this tutorial (bethsheets/SNPcalling_tutorial) contains:
+	-  a subset of a Acropora hyacinthus transcriptome assembly (ahy.fa)
+	-  a subset of contigs from 38 A. hya samples (100bp single end) in their raw format (rab-field###.fq.gz)
+	-  a meta data file with information about collection location (meta.txt)
+	- BASH (Map\_and\_callSNPs\_RNAseq.sh) and R (Basic\_SNP\_analyses.R) scripts with the full pipeline we follow below.
+	- this data from Bay & Palumbi (2014) Current Biology 
+- The pipeline uses the following programs: bowtie2, samtools, freebayes, vcflib, VCFtools, and R
+- Because the tutorial files are small, you can easily run this tutorial on a personal computer. If you're interested in using these scripts for your own data, check out the last section of the tutorial for more information. 
 
 
 ###How to install programs on a personal mac to try the tutorial
@@ -89,7 +95,9 @@ bowtie2
 
 `ls`
 
-1c) Call program:
+1c) For input fles to map to your assembly, we currently use the raw (non-trimmed/clipped) files (.fq.gz) straight from the sequencer. 
+
+1d) Call program:
 
 ```
 for i in *.fq.gz; do
@@ -239,5 +247,13 @@ hist(site.fst,xlab='Fst',ylab='Counts',main='Distribution of Fst between PC1 clu
 - Outliers & environmental data: outFLANK, bayenv, etc…
 - local & global linkage: vcftools or R linkage package
 - somatic mutations: are your samples high depth from the same individual? if so, you could look at this
-- dN/dS: orf prediction with biopython scripts or snpEff
-- eQTLs: are snps associated with expression?
+- dN/dS: ORF prediction with biopython scripts or snpEff
+- eQTLs: are SNPs associated with expression?
+
+## How to use your own data with these scripts
+
+- This pipeline runs quickly because we subset the data into 10 contigs. With your data, it may be difficult to run through this on a single computer, but it is possible if you have enough memory. We recommend accessing a computer cluster (most universities have a cluster). 
+	- There are a few accessible computer clusters online: Amazon cloud, NSF-XSEDE 
+- The Palumbi lab's parallelized bash scripts for transcriptome assembly, mapping, gene expression, and SNP calling are available formatted for a SLURM scheduler at https://github.com/bethsheets/Population-Genomics-via-RNAseq
+	- the guide to this is incomplete and being regulary updated
+	
