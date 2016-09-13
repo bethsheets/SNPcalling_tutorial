@@ -3,7 +3,7 @@ by the Palumbi Lab, September 2016
 
 ###About the tutorial and dataset: 
 
-- The Github repository for this tutorial (bethsheets/SNPcalling_tutorial) contains:
+- This Github repository contains:
 	-  a subset of an Acropora hyacinthus transcriptome assembly (ahy.fa)
 	-  a subset of contigs from 38 A. hya samples (100bp single end) in their raw format (rab-field###.fq.gz)
 	-  a meta data file with information about collection location (meta.txt)
