@@ -97,7 +97,7 @@ bowtie2
 
 `ls`
 
-1c) For input fles to map to your assembly, we currently use the raw (non-trimmed/clipped) files (.fq.gz) straight from the sequencer. This is because newer mapping and SNP-calling software is able to model low quality sequence at the end of reads and take into account the uncertainty; modeling is preferable to throwing away information. 
+1c) We currently use the raw (non-trimmed/clipped) input files (.fq.gz) straight from the sequencer to map to your assembly. This is because newer mapping and SNP-calling software is able to model low quality sequence at the end of reads and take into account the uncertainty; modeling is preferable to throwing away information. 
 
 1d) Call program:
 
