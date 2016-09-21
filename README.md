@@ -19,6 +19,7 @@ by the Palumbi Lab, September 2016
 ```
 # Open terminal
 # are command line tools installed? Type the command below. If it is installed, it should return the path. 
+#Type the following into terminal and hit enter:
 xcode-select -p
 
 
