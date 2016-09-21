@@ -60,6 +60,11 @@ bowtie2
 #the manual should pop up on your screen 
 ```
 
+5) Install the R program 
+
+- Visit: https://cloud.r-project.org
+- this program has its own console outside of the terminal we used above
+
 ### Explanation of bash utilities used in our scripts
 
 - wildcards: `*.txt`
