@@ -72,7 +72,7 @@ bowtie2
 	- you can reference a set of files that have parts of their names in common (for instance all files that end in .txt) using the * character, which refers to any number of characters (excluding things like spaces and tabs). For instance \*.txt refers to all text files in the current directory. 
 - for loops: `for i in *.txt; do <command> $i; done`
 	- This loops through each text file in the current directory in alphabetical order; each text file is given the temporary name "i" inside the loop, which we can use to carry out commands on several files. The syntax "$i" allows us to reference the current file inside the loop. 
-- basenames: `$(basename $i.txt)`
+- basenames: `$(basename $i .txt)`
 	- This extracts the name of a file without the extension. You can append a new filename extension by adding it after the command, like this: `$(basename $i.txt).fa` This is useful for naming the output of commands on files that you are processing in a for loop.
 
 ###Set up your workspace
@@ -130,7 +130,7 @@ done
 	- -U is your input file
 
 
-##Step 2: convert .bam to .sam files and sort them using samtools 
+##Step 2: convert .sam to .bam files, sort, & index them using samtools 
 
 2a) use ‘view’ to convert .sam to .bam
 
