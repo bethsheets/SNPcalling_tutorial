@@ -1,7 +1,7 @@
-##UC Genomics Workshop @ Asilomar: How to call SNPs from transcriptomic data
+## UC Genomics Workshop @ Asilomar: How to call SNPs from transcriptomic data
 by the Palumbi Lab, September 2016
 
-###About the tutorial and dataset: 
+### About the tutorial and dataset: 
 
 - This Github repository contains:
 	-  a subset of an Acropora hyacinthus transcriptome assembly (ahy.fa)
@@ -13,7 +13,7 @@ by the Palumbi Lab, September 2016
 - Because the tutorial files are small, you can easily run this tutorial on a personal computer. If you're interested in using these scripts for your own data, check out the last section of the tutorial for more information. 
 
 
-###How to install programs on a personal mac to try the tutorial
+### How to install programs on a personal mac to try the tutorial
 1) Check to see if Command Line Tools is installed on your computer. 
 
 ```
@@ -75,7 +75,7 @@ bowtie2
 - basenames: `$(basename $i .txt)`
 	- This extracts the name of a file without the extension. You can append a new filename extension by adding it after the command, like this: `$(basename $i.txt).fa` This is useful for naming the output of commands on files that you are processing in a for loop.
 
-###Set up your workspace
+### Set up your workspace
 1) Open Terminal
 
 2) move to your Desktop 
@@ -91,7 +91,7 @@ bowtie2
 `cd SNPcalling_tutorial`
 
 
-##Step 1: Map reads to assembly with bowtie2
+## Step 1: Map reads to assembly with bowtie2
 
 1a) Make a Bowtie2 index of your assembly.
 
@@ -130,7 +130,7 @@ done
 	- -U is your input file
 
 
-##Step 2: convert .sam to .bam files, sort, & index them using samtools 
+## Step 2: convert .sam to .bam files, sort, & index them using samtools 
 
 2a) use ‘view’ to convert .sam to .bam
 
@@ -158,7 +158,7 @@ rm *.sam
 - We don't need these intermediate files, since we have all of the mapped reads in our sorted bam files. We will hold on to the original fq.gz files in case we ever need them to carry out a different pipeline.
 
 
-##Step 3: Call SNPs with freebayes
+## Step 3: Call SNPs with freebayes
 3a) Index your assembly for freebayes
 
 `samtools faidx ahy.fa`
@@ -172,7 +172,7 @@ rm *.sam
 - --genotype-qualities : Calculate the marginal probability of genotypes and report as GQ in each sample field in the VCF output
 - -f : reference assembly
 
-##Step 4: Filter SNPs with VCFlib
+## Step 4: Filter SNPs with VCFlib
 
 4a) We filter for/to:
 
@@ -221,9 +221,9 @@ meta<-read.delim('meta.txt')
 ```
 
 
-#How to use genotype data:
+# How to use genotype data:
 
-##PCA
+## PCA
 Plot a PCA to visually identify any clusters within your data. Are these clusters associated with your meta data?
 
 In R
@@ -235,7 +235,7 @@ plot(pc.out$x[,1],pc.out$x[,2],col=meta$Pool,xlab='PC1',ylab='PC2',pch=19)
 legend('topright',legend=unique(meta$Pool),fill=c('black','red','green'))
 ```
 
-##Fst
+## Fst
 
 In R
 
